@@ -23,10 +23,10 @@ export function Hero() {
           initial={{ opacity: 0, y: -12, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
-          className="relative"
+          className="relative w-full max-w-[360px] md:max-w-[480px]"
         >
           <div className="absolute -inset-10 -z-10 rounded-full bg-primary/20 blur-3xl" />
-          <Logo size={180} priority />
+          <Logo priority />
         </motion.div>
 
         <motion.span

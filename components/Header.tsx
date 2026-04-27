@@ -23,8 +23,12 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
-        <a href="#top" className="flex items-center gap-2" aria-label="ZEROGRA RA ALLIANCE">
-          <Logo size={48} priority />
+        <a
+          href="#top"
+          aria-label="ZEROGRA RA ALLIANCE"
+          className="flex w-[140px] items-center md:w-[160px]"
+        >
+          <Logo priority />
         </a>
         <CtaButton size="sm" className="hidden sm:inline-flex">
           日程を調整する

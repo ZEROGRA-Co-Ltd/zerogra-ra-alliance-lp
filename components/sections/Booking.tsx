@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 
+const TIMEREX_URL = 'https://timerex.net/s/sotakonno/49ea2234';
+
 export function Booking() {
   const [iframeHeight, setIframeHeight] = useState(700);
 
@@ -38,22 +40,35 @@ export function Booking() {
 
         <FadeIn delay={0.15} className="mt-12 md:mt-16">
           <div className="border-gradient relative rounded-2xl bg-ink-card/80 p-3 backdrop-blur md:p-5">
+            {/* Glow ring around the iframe */}
             <div
+              aria-hidden
               className="pointer-events-none absolute -inset-px rounded-2xl"
               style={{
                 boxShadow:
                   '0 0 80px rgba(0,194,255,0.18), 0 0 160px rgba(37,99,235,0.18)',
               }}
-              aria-hidden
             />
-            <div className="overflow-hidden rounded-xl bg-white">
+            {/* No overflow:hidden here — it can clip the calendar UI on some
+                devices. The rounded corners are applied to the iframe itself. */}
+            <div className="relative rounded-xl bg-white">
               <iframe
-                src="https://timerex.net/s/sotakonno/49ea2234"
+                src={TIMEREX_URL}
+                title="ZEROGRA RA ALLIANCE — 日程調整"
                 width="100%"
                 height={iframeHeight}
+                loading="eager"
                 frameBorder="0"
-                title="ZEROGRA RA ALLIANCE — 日程調整"
-                style={{ borderRadius: '12px', display: 'block' }}
+                allow="clipboard-write; fullscreen"
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: iframeHeight,
+                  minHeight: iframeHeight,
+                  border: 0,
+                  borderRadius: '12px',
+                }}
               />
             </div>
           </div>
