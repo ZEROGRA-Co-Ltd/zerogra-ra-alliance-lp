@@ -1,7 +1,11 @@
 # public/
 
-`logo.png` is a temporary placeholder generated for build verification.
-Replace it with the actual ZEROGRA RA ALLIANCE logo (white background PNG)
-before deploying. The component reads it via `next/image` and applies
-`mix-blend-mode: screen` (see `components/ui/Logo.tsx`) so it blends with
-the dark theme.
+`logo.svg` is a vector recreation of the ZEROGRA RA ALLIANCE logo —
+"ZEROG" + "ALLIANCE" rendered in white, "RA" rendered with the brand
+cyan→teal→green gradient (`#00c2ff → #2bb5a0 → #3ecf8e`), on a transparent
+background so it sits cleanly on the dark theme.
+
+The text uses the system stack (Inter / Noto Sans JP / system-ui) at weight
+900. If a different typeface is required for brand fidelity, replace this
+file or drop a `logo.png` here and update `components/ui/Logo.tsx` to point
+at it.

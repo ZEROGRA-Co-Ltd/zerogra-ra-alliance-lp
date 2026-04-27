@@ -79,10 +79,6 @@ body {
     pointer-events: none;
   }
 
-  .logo-on-dark {
-    mix-blend-mode: screen;
-  }
-
   .scrollbar-thin::-webkit-scrollbar {
     height: 6px;
     width: 6px;

@@ -26,7 +26,7 @@ export function Hero() {
           className="relative"
         >
           <div className="absolute -inset-10 -z-10 rounded-full bg-primary/20 blur-3xl" />
-          <Logo size={220} priority />
+          <Logo size={180} priority />
         </motion.div>
 
         <motion.span
