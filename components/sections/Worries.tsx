@@ -21,7 +21,7 @@ const worries = [
 
 export function Worries() {
   return (
-    <section id="worries" className="relative py-24 md:py-32">
+    <section id="worries" aria-label="想定されるお悩み" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute right-1/4 top-1/2 h-[400px] w-[500px] rounded-full bg-accent/10 blur-[120px]" />
       </div>

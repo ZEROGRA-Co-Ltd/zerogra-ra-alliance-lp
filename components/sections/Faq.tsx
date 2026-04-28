@@ -11,7 +11,7 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-24 md:py-32">
+    <section id="faq" aria-label="よくあるご質問" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute right-1/3 top-1/4 h-[400px] w-[500px] rounded-full bg-primary/10 blur-[120px]" />
       </div>

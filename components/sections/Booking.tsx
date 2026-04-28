@@ -12,7 +12,7 @@ declare global {
 
 export function Booking() {
   return (
-    <section id="booking" className="relative py-24 md:py-32">
+    <section id="booking" aria-label="日程調整・お問い合わせ" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-primary/15 blur-[140px]" />
         <div className="absolute bottom-0 left-1/2 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />

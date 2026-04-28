@@ -14,7 +14,7 @@ const rowB = companies.slice(half);
 
 export function Companies() {
   return (
-    <section id="companies" className="relative py-24 md:py-32">
+    <section id="companies" aria-label="推薦可能求人の主な企業" className="relative py-24 md:py-32">
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"

@@ -6,7 +6,7 @@ import { allianceSteps } from '@/src/data/steps';
 
 export function Steps() {
   return (
-    <section id="steps" className="relative py-24 md:py-32">
+    <section id="steps" aria-label="アライアンス締結までの流れ" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute left-1/4 top-1/3 h-[400px] w-[500px] rounded-full bg-brand-green/10 blur-[120px]" />
       </div>
