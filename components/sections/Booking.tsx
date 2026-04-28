@@ -23,12 +23,12 @@ export function Booking() {
           eyebrow="Booking"
           title={
             <>
-              共に、
-              <span className="gradient-text">エージェントの未来</span>
-              を創る。
+              まずは
+              <span className="gradient-text">気軽にご相談</span>
+              ください
             </>
           }
-          description="大量集客・低決定率・低手数料から脱却し、共に高決定率を目指しましょう。まずはお気軽にご相談ください。"
+          description="選考支援から求人開拓まで、ZEROGRAが全力でサポートします。"
         />
 
         <FadeIn delay={0.15} className="mt-12 md:mt-16">

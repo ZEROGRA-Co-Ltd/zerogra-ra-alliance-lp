@@ -31,7 +31,7 @@ export function Header() {
           <Logo priority />
         </a>
         <CtaButton size="sm" className="hidden sm:inline-flex">
-          日程を調整する
+          無料で相談する
         </CtaButton>
         <CtaButton size="sm" className="sm:hidden">
           相談する

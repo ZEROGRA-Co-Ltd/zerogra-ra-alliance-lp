@@ -1,9 +1,15 @@
 # public/
 
-The ZEROGRA RA ALLIANCE wordmark is rendered directly in HTML by
-`components/ui/Logo.tsx`, using the Inter font loaded via `next/font` and
-the brand cyan→teal→green gradient on the "RA" letters. No image asset is
-required.
+## logo.png
 
-If a brand-fidelity raster/vector logo is later supplied, drop it here and
-swap the `Logo` component to use `next/image` instead.
+Placeholder PNG (1082×610, transparent background, white "ZEROGRA RA
+ALLIANCE" wordmark with cyan→teal→green gradient on the "RA" letters)
+generated for build verification. Replace with the official asset
+before launch — the `Logo` component reads it via `next/image`.
+
+## logos/
+
+Drop company logos here as `<slug>.png` to populate the
+"推薦可能求人の主な企業" section. Slugs are listed in
+`src/data/companies.ts`. Any file that's missing falls back
+automatically to a text-only card.

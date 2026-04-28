@@ -1,12 +1,11 @@
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/sections/Hero';
-import { Challenges } from '@/components/sections/Challenges';
+import { Companies } from '@/components/sections/Companies';
+import { Worries } from '@/components/sections/Worries';
 import { Solution } from '@/components/sections/Solution';
-import { StrategicAdvantages } from '@/components/sections/StrategicAdvantages';
-import { Portfolio } from '@/components/sections/Portfolio';
-import { Operation } from '@/components/sections/Operation';
-import { PartnerRank } from '@/components/sections/PartnerRank';
+import { Steps } from '@/components/sections/Steps';
+import { Faq } from '@/components/sections/Faq';
 import { Booking } from '@/components/sections/Booking';
 
 export default function Home() {
@@ -15,12 +14,11 @@ export default function Home() {
       <Header />
       <main className="relative overflow-hidden">
         <Hero />
-        <Challenges />
+        <Companies />
+        <Worries />
         <Solution />
-        <StrategicAdvantages />
-        <Portfolio />
-        <Operation />
-        <PartnerRank />
+        <Steps />
+        <Faq />
         <Booking />
       </main>
       <Footer />
