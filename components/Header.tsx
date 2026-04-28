@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Logo } from './ui/Logo';
+import Image from 'next/image';
 import { CtaButton } from './ui/CtaButton';
 
 export function Header() {
@@ -26,9 +26,16 @@ export function Header() {
         <a
           href="#top"
           aria-label="ZEROGRA RA ALLIANCE"
-          className="flex w-[140px] items-center md:w-[160px]"
+          className="flex items-center"
         >
-          <Logo priority />
+          <Image
+            src="/logo.png"
+            alt="ZEROGRA RA ALLIANCE"
+            width={160}
+            height={90}
+            priority
+            className="h-auto"
+          />
         </a>
         <CtaButton size="sm" className="hidden sm:inline-flex">
           無料で相談する

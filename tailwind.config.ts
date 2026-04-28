@@ -56,11 +56,21 @@ const config: Config = {
           '50%': { transform: 'translate(20px, -10px)' },
           '100%': { transform: 'translate(0, 0)' },
         },
+        'marquee-ltr': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'marquee-rtl': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
         pulseGlow: 'pulseGlow 4s ease-in-out infinite',
         drift: 'drift 14s ease-in-out infinite',
+        'marquee-ltr': 'marquee-ltr 40s linear infinite',
+        'marquee-rtl': 'marquee-rtl 40s linear infinite',
       },
     },
   },

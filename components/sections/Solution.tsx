@@ -16,8 +16,8 @@ const items: Item[] = [
   {
     icon: Database,
     title: '月額コストゼロで求人にアクセス',
-    description: '7,000件以上の良質な求人DBを、固定費なしで利用できます。',
-    highlights: ['月額費用 ¥0', '7,000+ 求人DB', '完全成果報酬'],
+    description: '6,000件以上の良質な求人DBを、固定費なしで利用できます。',
+    highlights: ['月額費用 ¥0', '6,000+ 求人DB', '完全成果報酬'],
   },
   {
     icon: Handshake,

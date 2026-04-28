@@ -18,7 +18,7 @@ const notoSansJp = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: 'ZEROGRA RA ALLIANCE — ハイレベルなRA組織を、アライアンスで実現。',
   description:
-    'エージェントの成約率と利益率を最大化する、共存・共栄のパートナー制度。月額無料で7,000件以上の良質な求人DBへアクセス。',
+    'エージェントの成約率と利益率を最大化する、共存・共栄のパートナー制度。月額無料で6,000件以上の良質な求人DBへアクセス。',
   metadataBase: new URL('https://ra-alliance.zerogra.co.jp'),
   openGraph: {
     title: 'ZEROGRA RA ALLIANCE',

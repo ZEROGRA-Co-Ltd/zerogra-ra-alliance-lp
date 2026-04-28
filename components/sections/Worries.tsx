@@ -6,16 +6,16 @@ import { FadeIn } from '../ui/FadeIn';
 
 const worries = [
   {
-    icon: Coins,
-    text: '求人媒体の月額費用が重く、成果が出ない月も固定費がかかる',
-  },
-  {
     icon: MessageSquareWarning,
-    text: '求人企業との連携が薄く、選考対策ができず決定率が上がらない',
+    text: 'RA企業とのコミュニケーションが希薄で求人の詳細がわからない',
   },
   {
     icon: UserMinus,
-    text: 'RA業務に人員を割けず、求人開拓が後手に回っている',
+    text: 'CA人員しか確保しておらず求人開拓ができていない',
+  },
+  {
+    icon: Coins,
+    text: '求人媒体の月額費用が重く、成果が出ない月も固定費がかかる',
   },
 ];
 
