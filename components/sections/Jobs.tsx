@@ -121,13 +121,17 @@ function NavButton({
 
 function JobCard({ job }: { job: Job }) {
   const Icon = job.icon;
+  const { amount, suffix } = splitCommission(job.commission);
+  // "一律..." 表示は文字数が多いので一段サイズを落として収める
+  const amountSize = amount.length > 5 ? 'text-2xl' : 'text-3xl';
+
   return (
     <article
       className="group relative flex w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-white/8 bg-ink-card/80 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow-soft"
     >
-      {/* Image area: gradient + icon */}
+      {/* Image area: gradient + small top icon + large commission */}
       <div
-        className={`relative flex h-[140px] items-center justify-center bg-gradient-to-br ${job.gradient}`}
+        className={`relative flex h-[140px] flex-col bg-gradient-to-br ${job.gradient} px-5 py-4`}
       >
         <div
           aria-hidden
@@ -138,9 +142,24 @@ function JobCard({ job }: { job: Job }) {
           }}
         />
         <Icon
-          className="relative size-14 text-white drop-shadow"
-          strokeWidth={1.25}
+          className="relative size-6 self-start text-white/85 drop-shadow"
+          strokeWidth={1.5}
         />
+        <div className="relative mt-auto flex flex-col items-center text-center leading-none">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/75">
+            紹介手数料
+          </span>
+          <span
+            className={`font-display mt-1.5 ${amountSize} font-bold text-white drop-shadow`}
+          >
+            {amount}
+          </span>
+          {suffix && (
+            <span className="mt-1 text-[10px] tracking-wide text-white/75">
+              {suffix}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Content area */}
@@ -148,10 +167,6 @@ function JobCard({ job }: { job: Job }) {
         <h3 className="text-balance text-base font-bold leading-snug text-white md:text-[17px]">
           {job.position}
         </h3>
-
-        <span className="self-start rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-medium text-accent-soft">
-          手数料: {job.commission}
-        </span>
 
         <ul className="flex flex-col gap-2 border-t border-white/8 pt-4">
           {job.features.map((f) => (
@@ -170,4 +185,12 @@ function JobCard({ job }: { job: Job }) {
       </div>
     </article>
   );
+}
+
+// "理論年収のXX%" → headline { amount: "XX%", suffix: "理論年収比" }
+// "一律XX万円" などはそのまま amount に乗せて suffix なし
+function splitCommission(s: string): { amount: string; suffix: string | null } {
+  const m = s.match(/^理論年収の(.+%)$/);
+  if (m) return { amount: m[1], suffix: '理論年収比' };
+  return { amount: s, suffix: null };
 }
