@@ -37,7 +37,7 @@ const items: Item[] = [
 
 export function Solution() {
   return (
-    <section id="solution" className="relative py-24 md:py-32">
+    <section id="solution" aria-label="ZEROGRA RA ALLIANCEで実現できること" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary/12 blur-[140px]" />
       </div>

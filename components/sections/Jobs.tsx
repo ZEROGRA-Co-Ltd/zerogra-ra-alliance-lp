@@ -41,7 +41,7 @@ export function Jobs() {
   };
 
   return (
-    <section id="jobs" className="relative py-24 md:py-32">
+    <section id="jobs" aria-label="推薦可能な求人例" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
         <div className="absolute right-1/4 top-1/3 h-[400px] w-[600px] rounded-full bg-accent/10 blur-[140px]" />
         <div className="absolute left-1/4 bottom-1/3 h-[400px] w-[600px] rounded-full bg-primary/10 blur-[140px]" />

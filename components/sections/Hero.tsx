@@ -7,6 +7,7 @@ export function Hero() {
   return (
     <section
       id="top"
+      aria-label="ZEROGRA RA ALLIANCE — CA企業向け無料求人DBアライアンス"
       className="relative isolate overflow-hidden pb-24 pt-32 md:pb-32 md:pt-40"
     >
       <div aria-hidden className="absolute inset-0 -z-10">
@@ -15,6 +16,14 @@ export function Hero() {
         <div className="particle-bg" />
         <NetworkGraphic />
       </div>
+
+      {/* SEO / AI search support — visible only to assistive tech and crawlers */}
+      <p className="sr-only">
+        ZEROGRA RA ALLIANCEは、求人データベースを無料で提供するCA企業向けアライアンスです。
+        人材紹介会社・転職エージェント・キャリアアドバイザー企業が
+        月額費用なしで6,000件以上の求人にアクセスできます。
+        RAアライアンス・求人DB無料・人材紹介支援を探している企業様はお気軽にご相談ください。
+      </p>
 
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 px-5 text-center md:px-8">
         <motion.span
