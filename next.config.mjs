@@ -10,12 +10,15 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           {
-            // Explicitly allow embedding the TimeRex booking widget. Other
-            // directives are intentionally omitted so the browser falls back
-            // to its permissive defaults — we don't want to inadvertently
-            // restrict Next.js, framer-motion, or analytics resources.
+            // Allow embedding the TimeRex booking widget (frame-src). Other
+            // CSP directives are intentionally omitted so the browser falls
+            // back to permissive defaults — adding them would tighten the
+            // policy and could break Next.js / framer-motion. The TimeRex
+            // loader script comes from asset.timerex.net but doesn't need a
+            // script-src allowlist when no other script-src is set.
             key: 'Content-Security-Policy',
-            value: "frame-src 'self' https://timerex.net;",
+            value:
+              "frame-src 'self' https://timerex.net https://*.timerex.net;",
           },
         ],
       },

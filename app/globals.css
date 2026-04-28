@@ -37,6 +37,13 @@ body {
     color: transparent;
   }
 
+  .gradient-text-logo {
+    background: linear-gradient(135deg, #00c2ff 0%, #2bb5a0 50%, #3ecf8e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .glass {
     background: linear-gradient(
       180deg,

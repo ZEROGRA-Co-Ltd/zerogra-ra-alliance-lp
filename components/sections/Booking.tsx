@@ -1,23 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import Script from 'next/script';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 
-const TIMEREX_URL = 'https://timerex.net/s/sotakonno/49ea2234';
+declare global {
+  interface Window {
+    TimerexCalendar?: () => void;
+  }
+}
 
 export function Booking() {
-  const [iframeHeight, setIframeHeight] = useState(700);
-
-  useEffect(() => {
-    const update = () => {
-      setIframeHeight(window.innerWidth < 768 ? 900 : 700);
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
   return (
     <section id="booking" className="relative py-24 md:py-32">
       <div aria-hidden className="absolute inset-0 -z-10">
@@ -40,7 +33,7 @@ export function Booking() {
 
         <FadeIn delay={0.15} className="mt-12 md:mt-16">
           <div className="border-gradient relative rounded-2xl bg-ink-card/80 p-3 backdrop-blur md:p-5">
-            {/* Glow ring around the iframe */}
+            {/* Glow ring around the embed */}
             <div
               aria-hidden
               className="pointer-events-none absolute -inset-px rounded-2xl"
@@ -49,26 +42,13 @@ export function Booking() {
                   '0 0 80px rgba(0,194,255,0.18), 0 0 160px rgba(37,99,235,0.18)',
               }}
             />
-            {/* No overflow:hidden here — it can clip the calendar UI on some
-                devices. The rounded corners are applied to the iframe itself. */}
             <div className="relative rounded-xl bg-white">
-              <iframe
-                src={TIMEREX_URL}
-                title="ZEROGRA RA ALLIANCE — 日程調整"
-                width="100%"
-                height={iframeHeight}
-                loading="eager"
-                frameBorder="0"
-                allow="clipboard-write; fullscreen"
-                referrerPolicy="strict-origin-when-cross-origin"
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  height: iframeHeight,
-                  minHeight: iframeHeight,
-                  border: 0,
-                  borderRadius: '12px',
-                }}
+              {/* Official TimeRex embed: a placeholder <div> picked up by
+                  the loader script below, which renders the calendar inline. */}
+              <div
+                id="timerex_calendar"
+                data-url="https://timerex.net/s/sotakonno/49ea2234"
+                style={{ minHeight: 800, borderRadius: '12px' }}
               />
             </div>
           </div>
@@ -80,6 +60,19 @@ export function Booking() {
           </p>
         </FadeIn>
       </div>
+
+      {/* TimeRex official loader. Initializes the widget by calling
+          window.TimerexCalendar() once the script has loaded. */}
+      <Script
+        id="timerex_embed"
+        src="https://asset.timerex.net/js/embed.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          if (typeof window !== 'undefined' && window.TimerexCalendar) {
+            window.TimerexCalendar();
+          }
+        }}
+      />
     </section>
   );
 }
