@@ -114,7 +114,7 @@ function MarqueeRow({
     >
       {doubled.map((c, i) => (
         <div key={`${c.slug}-${i}`} className="w-[180px] shrink-0 md:w-[220px]">
-          <CompanyCard name={c.name} slug={c.slug} />
+          <CompanyCard name={c.name} logo={c.logo} />
         </div>
       ))}
     </div>
