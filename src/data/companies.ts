@@ -3,33 +3,44 @@ import { Crown, Flame, MapPin, Users2, type LucideIcon } from 'lucide-react';
 export type Company = {
   name: string;
   slug: string;
+  /** Public asset path. Resolved via next/image. */
+  logo: string;
 };
 
-// Image asset path: /public/logos/{slug}.png
-// If the file is missing, the CompanyCard component falls back to a
-// text-only card automatically.
+// Logos live under /public/logos/ and are pre-renamed to match each
+// company's slug (NN-{slug}.{ext}). Files are assigned in the order they
+// were uploaded; if a company should be paired with a different file,
+// just update the `logo` field below and rename the file accordingly.
 export const companies: Company[] = [
-  { name: 'リージャス', slug: 'regus' },
-  { name: 'セコム', slug: 'secom' },
-  { name: 'ソニー損保', slug: 'sony-sonpo' },
-  { name: 'TCB', slug: 'tcb' },
-  { name: 'アスゼナ', slug: 'asuzena' },
-  { name: 'TOKIUM', slug: 'tokium' },
-  { name: 'Speee', slug: 'speee' },
-  { name: 'Geekly', slug: 'geekly' },
-  { name: 'リクルートスタッフィング', slug: 'recruit-staffing' },
-  { name: 'Leverages', slug: 'leverages' },
-  { name: 'ビザソ', slug: 'visaso' },
-  { name: 'キーエンス', slug: 'keyence' },
-  { name: 'Stockmark', slug: 'stockmark' },
-  { name: 'CROP', slug: 'crop' },
-  { name: 'MyVision', slug: 'myvision' },
-  { name: 'インテグループ', slug: 'integroup' },
-  { name: 'プロジェクトホールディングス', slug: 'project-holdings' },
-  { name: 'コンナイト', slug: 'connaite' },
-  { name: 'さすが屋', slug: 'sasugaya' },
-  { name: 'メルカリ', slug: 'mercari' },
-  { name: 'M&Aロイヤル', slug: 'ma-loyal' },
+  { name: 'リージャス', slug: 'regus', logo: '/logos/01-regus.webp' },
+  { name: 'セコム', slug: 'secom', logo: '/logos/02-secom.png' },
+  { name: 'ソニー損保', slug: 'sony-sonpo', logo: '/logos/03-sony-sonpo.jpg' },
+  { name: 'TCB', slug: 'tcb', logo: '/logos/04-tcb.webp' },
+  { name: 'アスゼナ', slug: 'asuzena', logo: '/logos/05-asuzena.jpg' },
+  { name: 'TOKIUM', slug: 'tokium', logo: '/logos/06-tokium.jpg' },
+  { name: 'Speee', slug: 'speee', logo: '/logos/07-speee.png' },
+  { name: 'Geekly', slug: 'geekly', logo: '/logos/08-geekly.jpg' },
+  {
+    name: 'リクルートスタッフィング',
+    slug: 'recruit-staffing',
+    logo: '/logos/09-recruit-staffing.svg',
+  },
+  { name: 'Leverages', slug: 'leverages', logo: '/logos/10-leverages.png' },
+  { name: 'ビザソ', slug: 'visaso', logo: '/logos/11-visaso.png' },
+  { name: 'キーエンス', slug: 'keyence', logo: '/logos/12-keyence.jpg' },
+  { name: 'Stockmark', slug: 'stockmark', logo: '/logos/13-stockmark.jpg' },
+  { name: 'CROP', slug: 'crop', logo: '/logos/14-crop.png' },
+  { name: 'MyVision', slug: 'myvision', logo: '/logos/15-myvision.png' },
+  { name: 'インテグループ', slug: 'integroup', logo: '/logos/16-integroup.png' },
+  {
+    name: 'プロジェクトホールディングス',
+    slug: 'project-holdings',
+    logo: '/logos/17-project-holdings.png',
+  },
+  { name: 'コンナイト', slug: 'connaite', logo: '/logos/18-connaite.png' },
+  { name: 'さすが屋', slug: 'sasugaya', logo: '/logos/19-sasugaya.png' },
+  { name: 'メルカリ', slug: 'mercari', logo: '/logos/20-mercari.jpg' },
+  { name: 'M&Aロイヤル', slug: 'ma-loyal', logo: '/logos/21-ma-loyal.png' },
 ];
 
 export type PortfolioCategory = {
