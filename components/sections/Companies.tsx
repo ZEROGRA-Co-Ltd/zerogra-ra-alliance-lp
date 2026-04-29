@@ -113,7 +113,7 @@ function MarqueeRow({
       className={`group flex w-max gap-3 ${animation} hover:[animation-play-state:paused] md:gap-4`}
     >
       {doubled.map((c, i) => (
-        <div key={`${c.slug}-${i}`} className="w-[180px] shrink-0 md:w-[220px]">
+        <div key={`${c.slug}-${i}`} className="shrink-0">
           <CompanyCard name={c.name} logo={c.logo} />
         </div>
       ))}

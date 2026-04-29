@@ -8,23 +8,24 @@ type Props = {
   logo: string;
 };
 
-// Renders the company logo at 120×60 (object-contain). SVGs go through a
-// plain <img> because next/image's optimizer treats SVGs specially and
-// some self-hosted setups silently 404 them; raster files use next/image
-// for automatic format/size optimization. If either fails to load, we
-// fall back to a centered text label so the card never reads as a blank
-// gray block.
+// White-card logo tile (160×80). Logos render at their original brand
+// colours and fill the inner area via w-full/h-full + object-contain so
+// each mark feels balanced regardless of intrinsic aspect.
+//
+// SVG paths render through a plain <img> because next/image's optimizer
+// handles SVG inconsistently. Both branches share an onError handler
+// that swaps to a centered text label so the card never reads as a
+// blank white block.
 export function CompanyCard({ name, logo }: Props) {
   const [errored, setErrored] = useState(false);
   const isSvg = logo.toLowerCase().endsWith('.svg');
 
-  const imgClass =
-    'h-[60px] w-[120px] object-contain opacity-70 transition-opacity duration-300 group-hover:opacity-100';
+  const imgClass = 'h-full w-full object-contain';
 
   return (
-    <div className="group relative flex aspect-[3/2] items-center justify-center rounded-xl border border-white/8 bg-white/[0.03] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/30 hover:bg-white/[0.05]">
+    <div className="group relative flex h-[80px] w-[160px] items-center justify-center rounded-xl border border-white/20 bg-white p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-glow-soft">
       {errored ? (
-        <span className="text-balance text-center text-sm font-medium text-muted">
+        <span className="text-balance text-center text-xs font-medium text-slate-700">
           {name}
         </span>
       ) : isSvg ? (
@@ -32,8 +33,6 @@ export function CompanyCard({ name, logo }: Props) {
         <img
           src={logo}
           alt={name}
-          width={120}
-          height={60}
           loading="lazy"
           onError={() => setErrored(true)}
           className={imgClass}
@@ -42,9 +41,9 @@ export function CompanyCard({ name, logo }: Props) {
         <Image
           src={logo}
           alt={name}
-          width={120}
-          height={60}
-          sizes="120px"
+          width={160}
+          height={80}
+          sizes="160px"
           onError={() => setErrored(true)}
           className={imgClass}
         />
