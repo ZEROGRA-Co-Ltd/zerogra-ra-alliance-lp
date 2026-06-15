@@ -1,6 +1,6 @@
 'use client';
 
-import { Database, Handshake, TrendingUp } from 'lucide-react';
+import { Database, Handshake, Lightbulb, TrendingUp } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 import { ReactNode } from 'react';
@@ -33,6 +33,13 @@ const items: Item[] = [
       '採用企業との契約Feeベースで高い還元を実現します。',
     highlights: ['パートナーランク制度あり', '実績に応じて還元率UP', '企業開拓コスト"0"で高手数料確保'],
   },
+  {
+    icon: Lightbulb,
+    title: '事業成長のアドバイザー',
+    description:
+      '事業計画から集客戦略、求人選定まで人材紹介事業のコンサルティングまで。',
+    highlights: ['事業計画の壁打ち', '集客戦略相談', 'ターゲット設定'],
+  },
 ];
 
 export function Solution() {
@@ -55,7 +62,7 @@ export function Solution() {
           description="貴社の外部RA集団として紹介事業の成長をお手伝いします。"
         />
 
-        <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-2">
           {items.map((item, i) => (
             <FadeIn key={item.title} delay={i * 0.08}>
               <div className="border-gradient relative flex h-full flex-col overflow-hidden rounded-2xl bg-ink-card/70 p-7 backdrop-blur md:p-8">
