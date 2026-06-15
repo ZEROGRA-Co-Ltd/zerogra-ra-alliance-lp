@@ -93,9 +93,6 @@ export function PartnerRank() {
                   詳細条件は面談にてご案内
                 </li>
               </ul>
-              <p className="text-xs leading-relaxed text-muted/80 md:text-sm">
-                ※ Platinum（90%）へ到達できるのはBasic以上のプラン加入者のみです。Freeプランの還元率上限はGold（85%）となります。
-              </p>
               <div className="mt-2">
                 <CtaButton size="lg">詳細を聞く</CtaButton>
               </div>

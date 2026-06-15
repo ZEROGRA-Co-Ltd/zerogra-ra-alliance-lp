@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Minus, Sparkles, Target, TrendingUp } from 'lucide-react';
+import { Check, Minus, Star, TrendingUp } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 import { CtaButton } from '../ui/CtaButton';
@@ -64,59 +64,13 @@ function PlanComparisonTable() {
       aria-label="プラン比較表"
       className="overflow-hidden rounded-2xl border border-white/8 bg-ink-card/60 backdrop-blur"
     >
-      {/* Header row — plan info */}
+      {/* Header row — plan info (固定高さ) */}
       <div className={`grid ${GRID_COLS}`} role="row">
         <div className="border-b border-white/8 bg-white/[0.02] p-5" />
         {plans.map((plan) => (
           <PlanHeaderCell key={plan.id} plan={plan} />
         ))}
       </div>
-
-      {/* Monthly fee row */}
-      <ComparisonRow label="月額">
-        {plans.map((plan) => (
-          <div
-            key={plan.id}
-            className={`flex items-baseline justify-center gap-1.5 p-5 ${cellBg(plan)}`}
-            role="cell"
-          >
-            <span className="font-display text-2xl font-bold text-white md:text-3xl">
-              {plan.monthlyFee}
-            </span>
-            <span className="text-[10px] text-muted">/ 月</span>
-          </div>
-        ))}
-      </ComparisonRow>
-
-      {/* Start rank row */}
-      <ComparisonRow label="スタートランク">
-        {plans.map((plan) => (
-          <div
-            key={plan.id}
-            className={`p-5 text-center ${cellBg(plan)}`}
-            role="cell"
-          >
-            <span
-              className={`font-display text-xl font-bold md:text-2xl ${plan.startRankColor}`}
-            >
-              {plan.startRankLabel}
-            </span>
-          </div>
-        ))}
-      </ComparisonRow>
-
-      {/* Contract row */}
-      <ComparisonRow label="契約期間">
-        {plans.map((plan) => (
-          <div
-            key={plan.id}
-            className={`p-5 text-center text-sm font-medium text-white ${cellBg(plan)}`}
-            role="cell"
-          >
-            {plan.contract}
-          </div>
-        ))}
-      </ComparisonRow>
 
       {/* Target row */}
       <ComparisonRow label="対象企業像">
@@ -178,7 +132,7 @@ function PlanComparisonTable() {
       </ComparisonRow>
 
       {/* CTA row */}
-      <div className={`grid ${GRID_COLS}`} role="row">
+      <div className={`grid ${GRID_COLS} border-t border-white/8`} role="row">
         <div className="bg-white/[0.02] p-5" />
         {plans.map((plan) => (
           <div
@@ -225,16 +179,14 @@ function ComparisonRow({
 }
 
 function cellBg(plan: Plan) {
-  return plan.highlighted ? 'bg-accent/[0.04]' : '';
+  return plan.theme.cardBg;
 }
 
 function PlanHeaderCell({ plan }: { plan: Plan }) {
   const highlighted = plan.highlighted;
   return (
     <div
-      className={`relative border-b border-white/8 p-5 text-center ${
-        highlighted ? 'bg-accent/[0.06]' : ''
-      }`}
+      className={`relative flex min-h-[200px] flex-col items-center justify-center border-b border-white/8 p-5 text-center ${plan.theme.cardBg}`}
       role="columnheader"
     >
       {highlighted && (
@@ -243,33 +195,41 @@ function PlanHeaderCell({ plan }: { plan: Plan }) {
           className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-accent"
         />
       )}
-      {plan.badges && plan.badges.length > 0 && (
-        <div className="mb-3 flex flex-wrap items-center justify-center gap-1.5">
-          {plan.badges.map((badge, idx) => (
-            <span
-              key={badge}
-              className={`font-display inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.15em] ${
-                highlighted && idx === 0
-                  ? 'bg-gradient-to-r from-primary to-accent text-white shadow-glow-soft'
-                  : 'border border-accent/40 bg-accent/10 text-accent'
-              }`}
-            >
-              {highlighted && idx === 0 && (
-                <Sparkles className="size-2.5" strokeWidth={2.5} />
-              )}
-              {badge}
-            </span>
-          ))}
-        </div>
-      )}
-      <h3
-        className={`font-display text-xl font-bold tracking-wider md:text-2xl ${
-          highlighted ? 'text-white' : 'text-white'
-        }`}
-      >
-        {plan.name}
-      </h3>
-      <p className="mt-1 text-[11px] text-muted">{plan.tagline}</p>
+
+      <div className="flex items-center justify-center gap-2">
+        {highlighted && (
+          <Star
+            className="size-5 fill-yellow-400 text-yellow-400"
+            strokeWidth={2}
+            aria-label="おすすめ"
+          />
+        )}
+        <h3 className="font-display text-xl font-bold tracking-wider text-white md:text-2xl">
+          {plan.name}
+        </h3>
+      </div>
+
+      <div className="mt-3 flex items-baseline justify-center gap-1">
+        <span className="font-display text-2xl font-bold text-white md:text-3xl">
+          {plan.monthlyFee}
+        </span>
+        <span className="text-[10px] text-muted">/ 月</span>
+      </div>
+
+      <div className="mt-2 text-[11px] leading-tight text-muted">
+        {plan.feeFormat}
+      </div>
+
+      <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1">
+        <span className="text-[9px] uppercase tracking-[0.15em] text-muted">
+          Start
+        </span>
+        <span
+          className={`font-display text-xs font-bold ${plan.startRankColor}`}
+        >
+          {plan.startRankLabel}
+        </span>
+      </div>
     </div>
   );
 }
@@ -279,130 +239,112 @@ function PlanCard({ plan }: { plan: Plan }) {
 
   return (
     <div
-      className={`relative flex h-full flex-col overflow-hidden rounded-2xl bg-ink-card/80 p-7 backdrop-blur transition-all duration-500 hover:-translate-y-1 md:p-8 ${
-        highlighted
-          ? 'border-2 border-accent shadow-glow'
-          : 'border border-white/8 hover:border-accent/40'
-      }`}
+      className={`relative flex h-full flex-col overflow-hidden rounded-2xl border-2 p-7 backdrop-blur transition-all duration-500 hover:-translate-y-1 md:p-8 ${plan.theme.cardBg} ${plan.theme.cardBorder} ${plan.theme.cardShadow ?? ''}`}
     >
-      {highlighted && (
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-radial-glow opacity-40"
-        />
-      )}
-
-      {plan.badges && plan.badges.length > 0 && (
-        <div className="mb-4 flex flex-wrap items-center gap-2">
-          {plan.badges.map((badge, idx) => (
-            <span
-              key={badge}
-              className={`font-display inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${
-                highlighted && idx === 0
-                  ? 'bg-gradient-to-r from-primary to-accent text-white shadow-glow-soft'
-                  : 'border border-accent/40 bg-accent/10 text-accent'
-              }`}
-            >
-              {highlighted && idx === 0 && (
-                <Sparkles className="size-3" strokeWidth={2.5} />
-              )}
-              {badge}
-            </span>
-          ))}
-        </div>
-      )}
-
-      <h3 className="font-display text-2xl font-bold tracking-wider text-white md:text-3xl">
-        {plan.name}
-      </h3>
-      <p className="mt-1 text-xs text-muted md:text-sm">{plan.tagline}</p>
-
-      <div className="mt-5 flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] p-3">
-        <Target
-          className="mt-0.5 size-4 shrink-0 text-accent"
-          strokeWidth={2}
-        />
-        <p className="text-xs leading-relaxed text-white/85">{plan.target}</p>
-      </div>
-
-      <div className="mt-5 flex items-baseline gap-2">
-        <span className="font-display text-3xl font-bold text-white md:text-4xl">
-          {plan.monthlyFee}
-        </span>
-        <span className="text-xs text-muted">/ 月</span>
-      </div>
-
-      <div className="mt-5 rounded-xl border border-white/8 bg-white/[0.02] p-4">
-        <div className="text-xs text-muted">スタートランク</div>
-        <div
-          className={`font-display mt-1 text-2xl font-bold ${plan.startRankColor}`}
-        >
-          {plan.startRankLabel}
-        </div>
-      </div>
-
-      <dl className="mt-5 text-xs">
-        <dt className="text-muted/70">契約期間</dt>
-        <dd className="mt-1 font-medium text-white">{plan.contract}</dd>
-      </dl>
-
-      <p className="mt-5 text-xs leading-relaxed text-muted">
-        {plan.targetDetail}
-      </p>
-
-      <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-white/8 pt-5">
-        {planFeatureRows.map((row) => {
-          const enabled = row.values[plan.id as PlanId];
-          return (
-            <li
-              key={row.label}
-              className={`flex items-start gap-2 text-sm leading-snug ${
-                enabled ? 'text-white/90' : 'text-muted/50'
-              }`}
-            >
-              {enabled ? (
-                <Check
-                  className="mt-0.5 size-4 shrink-0 text-brand-green"
-                  strokeWidth={2.5}
-                />
-              ) : (
-                <Minus
-                  className="mt-0.5 size-4 shrink-0 text-muted/40"
-                  strokeWidth={2}
-                />
-              )}
-              <span>{row.label}</span>
-            </li>
-          );
-        })}
-      </ul>
-
-      {plan.minContractNote && (
-        <p className="mt-4 text-[11px] text-muted/80">{plan.minContractNote}</p>
-      )}
-
-      <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-accent/20 bg-accent/[0.05] p-3">
+      {/* Fixed header area — 200px min height */}
+      <div className="flex min-h-[200px] flex-col">
         <div className="flex items-center gap-2">
-          <TrendingUp
-            className="size-4 shrink-0 text-accent"
-            strokeWidth={2}
-          />
-          <span className="text-[11px] uppercase tracking-[0.15em] text-accent">
-            月間決定目標
+          {highlighted && (
+            <Star
+              className="size-6 shrink-0 fill-yellow-400 text-yellow-400"
+              strokeWidth={2}
+              aria-label="おすすめ"
+            />
+          )}
+          <h3 className="font-display text-2xl font-bold tracking-wider text-white md:text-3xl">
+            {plan.name}
+          </h3>
+        </div>
+
+        <div className="mt-4 flex items-baseline gap-2">
+          <span className="font-display text-3xl font-bold text-white md:text-4xl">
+            {plan.monthlyFee}
+          </span>
+          <span className="text-xs text-muted">/ 月</span>
+        </div>
+
+        <p className="mt-2 text-xs leading-tight text-muted">
+          {plan.feeFormat}
+        </p>
+
+        <div className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5">
+          <span className="text-[10px] uppercase tracking-[0.15em] text-muted">
+            スタートランク
+          </span>
+          <span
+            className={`font-display text-sm font-bold ${plan.startRankColor}`}
+          >
+            {plan.startRankLabel}
           </span>
         </div>
-        <span className="font-display text-sm font-bold text-white md:text-base">
-          {plan.monthlyGoal}
-        </span>
       </div>
 
-      <div className="mt-auto pt-6">
-        <CtaButton
-          variant={highlighted ? 'primary' : 'ghost'}
-          className="w-full"
-        >
-          このプランで相談する
-        </CtaButton>
+      {/* Body */}
+      <div className="mt-5 flex flex-1 flex-col">
+        <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3">
+          <p className="text-xs leading-relaxed text-white/85">{plan.target}</p>
+        </div>
+
+        <p className="mt-4 text-xs leading-relaxed text-muted">
+          {plan.targetDetail}
+        </p>
+
+        <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-white/8 pt-5">
+          {planFeatureRows.map((row) => {
+            const enabled = row.values[plan.id as PlanId];
+            return (
+              <li
+                key={row.label}
+                className={`flex items-start gap-2 text-sm leading-snug ${
+                  enabled ? 'text-white/90' : 'text-muted/50'
+                }`}
+              >
+                {enabled ? (
+                  <Check
+                    className="mt-0.5 size-4 shrink-0 text-brand-green"
+                    strokeWidth={2.5}
+                  />
+                ) : (
+                  <Minus
+                    className="mt-0.5 size-4 shrink-0 text-muted/40"
+                    strokeWidth={2}
+                  />
+                )}
+                <span>{row.label}</span>
+              </li>
+            );
+          })}
+        </ul>
+
+        {plan.minContractNote && (
+          <p className="mt-4 text-[11px] text-muted/80">
+            {plan.minContractNote}
+          </p>
+        )}
+
+        <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-accent/20 bg-accent/[0.05] p-3">
+          <div className="flex items-center gap-2">
+            <TrendingUp
+              className="size-4 shrink-0 text-accent"
+              strokeWidth={2}
+            />
+            <span className="text-[11px] uppercase tracking-[0.15em] text-accent">
+              月間決定目標
+            </span>
+          </div>
+          <span className="font-display text-sm font-bold text-white md:text-base">
+            {plan.monthlyGoal}
+          </span>
+        </div>
+
+        <div className="mt-auto pt-6">
+          <CtaButton
+            variant={highlighted ? 'primary' : 'ghost'}
+            className="w-full"
+          >
+            このプランで相談する
+          </CtaButton>
+        </div>
       </div>
     </div>
   );
