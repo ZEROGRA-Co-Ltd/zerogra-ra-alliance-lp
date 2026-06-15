@@ -5,7 +5,6 @@ import { Companies } from '@/components/sections/Companies';
 import { Worries } from '@/components/sections/Worries';
 import { Solution } from '@/components/sections/Solution';
 import { Plans } from '@/components/sections/Plans';
-import { Jobs } from '@/components/sections/Jobs';
 import { PartnerRank } from '@/components/sections/PartnerRank';
 import { Steps } from '@/components/sections/Steps';
 import { Faq } from '@/components/sections/Faq';
@@ -68,13 +67,12 @@ export default function Home() {
       <Header />
       <main className="relative overflow-hidden">
         <Hero />
-        <Companies />
         <Worries />
         <Solution />
-        <Plans />
-        <Jobs />
+        <Companies />
         <PartnerRank />
         <Steps />
+        <Plans />
         <Faq />
         <Booking />
       </main>

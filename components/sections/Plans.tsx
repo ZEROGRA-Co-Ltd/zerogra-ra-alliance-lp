@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Sparkles, Target, TrendingUp } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 import { CtaButton } from '../ui/CtaButton';
@@ -31,9 +31,9 @@ export function Plans() {
           description="紹介事業のフェーズと目標に応じて、4つのプランから最適なものをお選びいただけます。"
         />
 
-        <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid items-stretch gap-6 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan, i) => (
-            <FadeIn key={plan.id} delay={i * 0.08}>
+            <FadeIn key={plan.id} delay={i * 0.08} className="h-full">
               <PlanCard plan={plan} />
             </FadeIn>
           ))}
@@ -92,14 +92,23 @@ function PlanCard({ plan }: { plan: Plan }) {
       </h3>
       <p className="mt-1 text-xs text-muted md:text-sm">{plan.tagline}</p>
 
-      <div className="mt-6 flex items-baseline gap-2">
+      {/* 対象企業像 */}
+      <div className="mt-5 flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] p-3">
+        <Target
+          className="mt-0.5 size-4 shrink-0 text-accent"
+          strokeWidth={2}
+        />
+        <p className="text-xs leading-relaxed text-white/85">{plan.target}</p>
+      </div>
+
+      <div className="mt-5 flex items-baseline gap-2">
         <span className="font-display text-3xl font-bold text-white md:text-4xl">
           {plan.monthlyFee}
         </span>
         <span className="text-xs text-muted">/ 月</span>
       </div>
 
-      <div className="mt-6 rounded-xl border border-white/8 bg-white/[0.02] p-4">
+      <div className="mt-5 rounded-xl border border-white/8 bg-white/[0.02] p-4">
         <div className="text-[10px] uppercase tracking-[0.2em] text-accent">
           還元率
         </div>
@@ -109,7 +118,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         <div className="mt-1 text-xs text-muted">{plan.rebateNote}</div>
       </div>
 
-      <dl className="mt-6 grid grid-cols-2 gap-3 text-xs">
+      <dl className="mt-5 grid grid-cols-2 gap-3 text-xs">
         <div>
           <dt className="text-muted/70">スタートランク</dt>
           <dd className="mt-1 font-medium text-white">{plan.startRank}</dd>
@@ -120,7 +129,12 @@ function PlanCard({ plan }: { plan: Plan }) {
         </div>
       </dl>
 
-      <ul className="mt-6 flex flex-col gap-2 border-t border-white/8 pt-5">
+      {/* 提供内容詳細 */}
+      <p className="mt-5 text-xs leading-relaxed text-muted">
+        {plan.targetDetail}
+      </p>
+
+      <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-white/8 pt-5">
         {plan.features.map((f) => (
           <li
             key={f}
@@ -139,13 +153,23 @@ function PlanCard({ plan }: { plan: Plan }) {
         <p className="mt-4 text-[11px] text-muted/80">{plan.minContractNote}</p>
       )}
 
-      <div className="mt-6 border-t border-white/8 pt-5 text-xs leading-relaxed text-muted">
-        <span className="text-muted/70">対象：</span>
-        {plan.target}
+      {/* 月間決定目標 */}
+      <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-accent/20 bg-accent/[0.05] p-3">
+        <div className="flex items-center gap-2">
+          <TrendingUp
+            className="size-4 shrink-0 text-accent"
+            strokeWidth={2}
+          />
+          <span className="text-[11px] uppercase tracking-[0.15em] text-accent">
+            月間決定目標
+          </span>
+        </div>
+        <span className="font-display text-sm font-bold text-white md:text-base">
+          {plan.monthlyGoal}
+        </span>
       </div>
 
-      <div className="mt-6 flex-1" />
-      <div className="mt-6">
+      <div className="mt-auto pt-6">
         <CtaButton
           variant={highlighted ? 'primary' : 'ghost'}
           className="w-full"
