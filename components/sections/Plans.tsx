@@ -209,17 +209,6 @@ function PlanHeaderCell({ plan }: { plan: Plan }) {
         </h3>
       </div>
 
-      <div className="mt-3 flex items-baseline justify-center gap-1">
-        <span className="font-display text-2xl font-bold text-white md:text-3xl">
-          {plan.monthlyFee}
-        </span>
-        <span className="text-[10px] text-muted">/ 月</span>
-      </div>
-
-      <div className="mt-2 text-[11px] leading-tight text-muted">
-        {plan.feeFormat}
-      </div>
-
       <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1">
         <span className="text-[9px] uppercase tracking-[0.15em] text-muted">
           Start
@@ -229,6 +218,13 @@ function PlanHeaderCell({ plan }: { plan: Plan }) {
         >
           {plan.startRankLabel}
         </span>
+      </div>
+
+      <div className="mt-3 flex items-baseline justify-center gap-1">
+        <span className="font-display text-2xl font-bold text-white md:text-3xl">
+          {plan.monthlyFee}
+        </span>
+        <span className="text-[10px] text-muted">/ 月</span>
       </div>
     </div>
   );
@@ -256,17 +252,6 @@ function PlanCard({ plan }: { plan: Plan }) {
           </h3>
         </div>
 
-        <div className="mt-4 flex items-baseline gap-2">
-          <span className="font-display text-3xl font-bold text-white md:text-4xl">
-            {plan.monthlyFee}
-          </span>
-          <span className="text-xs text-muted">/ 月</span>
-        </div>
-
-        <p className="mt-2 text-xs leading-tight text-muted">
-          {plan.feeFormat}
-        </p>
-
         <div className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5">
           <span className="text-[10px] uppercase tracking-[0.15em] text-muted">
             スタートランク
@@ -277,12 +262,34 @@ function PlanCard({ plan }: { plan: Plan }) {
             {plan.startRankLabel}
           </span>
         </div>
+
+        <div className="mt-4 flex items-baseline gap-2">
+          <span className="font-display text-3xl font-bold text-white md:text-4xl">
+            {plan.monthlyFee}
+          </span>
+          <span className="text-xs text-muted">/ 月</span>
+        </div>
       </div>
 
       {/* Body */}
       <div className="mt-5 flex flex-1 flex-col">
         <div className="rounded-xl border border-white/8 bg-white/[0.03] p-3">
           <p className="text-xs leading-relaxed text-white/85">{plan.target}</p>
+        </div>
+
+        <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-accent/20 bg-accent/[0.05] p-3">
+          <div className="flex items-center gap-2">
+            <TrendingUp
+              className="size-4 shrink-0 text-accent"
+              strokeWidth={2}
+            />
+            <span className="text-[11px] uppercase tracking-[0.15em] text-accent">
+              月間決定目標
+            </span>
+          </div>
+          <span className="font-display text-sm font-bold text-white md:text-base">
+            {plan.monthlyGoal}
+          </span>
         </div>
 
         <p className="mt-4 text-xs leading-relaxed text-muted">
@@ -321,21 +328,6 @@ function PlanCard({ plan }: { plan: Plan }) {
             {plan.minContractNote}
           </p>
         )}
-
-        <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-accent/20 bg-accent/[0.05] p-3">
-          <div className="flex items-center gap-2">
-            <TrendingUp
-              className="size-4 shrink-0 text-accent"
-              strokeWidth={2}
-            />
-            <span className="text-[11px] uppercase tracking-[0.15em] text-accent">
-              月間決定目標
-            </span>
-          </div>
-          <span className="font-display text-sm font-bold text-white md:text-base">
-            {plan.monthlyGoal}
-          </span>
-        </div>
 
         <div className="mt-auto pt-6">
           <CtaButton

@@ -3,6 +3,7 @@
 import { Database, Handshake, Lightbulb, TrendingUp } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
+import { BpoBanner } from './BpoBanner';
 import { ReactNode } from 'react';
 
 type Item = {
@@ -98,6 +99,10 @@ export function Solution() {
           <p className="text-xs text-muted/80 md:text-sm">
             ※ パートナーランク制度の詳細（還元率・条件）は面談にてご案内します。
           </p>
+        </FadeIn>
+
+        <FadeIn delay={0.35} className="mt-10">
+          <BpoBanner />
         </FadeIn>
       </div>
     </section>
