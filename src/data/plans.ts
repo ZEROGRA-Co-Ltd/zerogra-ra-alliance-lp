@@ -15,7 +15,7 @@ export const planFeatureRows: PlanFeatureRow[] = [
     values: { free: true, basic: true, pro: true, executive: true },
   },
   {
-    label: 'AIマッチングシステム（無料）',
+    label: 'AIマッチングシステム',
     values: { free: false, basic: true, pro: true, executive: true },
   },
   {
@@ -107,7 +107,7 @@ export const plans: Plan[] = [
     features: [
       '5,000求人へのアクセス',
       'Goldランク即時スタート',
-      'AIマッチングシステム(無料)',
+      'AIマッチングシステム',
       '求人選定サポート',
       '書類添削',
       '企業開拓リクエスト',
@@ -138,7 +138,7 @@ export const plans: Plan[] = [
     features: [
       '5,000求人へのアクセス',
       'Platinumランク即時スタート',
-      'AIマッチングシステム(無料)',
+      'AIマッチングシステム',
       '求人選定サポート',
       '書類添削',
       '企業開拓リクエスト',
@@ -170,7 +170,7 @@ export const plans: Plan[] = [
     features: [
       '5,000求人へのアクセス',
       'Platinumランク即時スタート',
-      'AIマッチングシステム(無料)',
+      'AIマッチングシステム',
       '求人選定サポート',
       '書類添削',
       '企業開拓リクエスト',
