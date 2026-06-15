@@ -3,7 +3,6 @@ import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/sections/Hero';
 import { Companies } from '@/components/sections/Companies';
 import { Worries } from '@/components/sections/Worries';
-import { BpoBanner } from '@/components/sections/BpoBanner';
 import { Solution } from '@/components/sections/Solution';
 import { Plans } from '@/components/sections/Plans';
 import { PartnerRank } from '@/components/sections/PartnerRank';
@@ -69,7 +68,6 @@ export default function Home() {
       <main className="relative overflow-hidden">
         <Hero />
         <Worries />
-        <BpoBanner />
         <Solution />
         <Companies />
         <PartnerRank />

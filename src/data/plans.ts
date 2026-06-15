@@ -46,7 +46,6 @@ export type Plan = {
   tagline: string;
   monthlyFee: string;
   feeNote: string;
-  feeFormat: string;
   rebate: string;
   rebateNote: string;
   startRank: string;
@@ -74,7 +73,6 @@ export const plans: Plan[] = [
     tagline: '完全成果報酬',
     monthlyFee: '¥0',
     feeNote: '完全成果報酬',
-    feeFormat: '完全成果報酬',
     rebate: '75〜85%',
     rebateNote: '上限Gold＝85%止まり',
     startRank: 'Standard',
@@ -100,7 +98,6 @@ export const plans: Plan[] = [
     tagline: '月額固定＋成果報酬',
     monthlyFee: '¥120,000',
     feeNote: '月額固定＋成果報酬',
-    feeFormat: '月額固定＋成果報酬',
     rebate: '85〜90%',
     rebateNote: 'Platinum到達可能',
     startRank: 'Gold 即時',
@@ -132,7 +129,6 @@ export const plans: Plan[] = [
     tagline: '月額固定＋成果報酬',
     monthlyFee: '¥300,000',
     feeNote: '月額固定＋成果報酬',
-    feeFormat: '月額固定＋成果報酬 / 最低6ヶ月',
     rebate: '90%',
     rebateNote: '固定',
     startRank: 'Platinum 即時',
@@ -165,7 +161,6 @@ export const plans: Plan[] = [
     tagline: '月額固定＋成果報酬',
     monthlyFee: '¥500,000',
     feeNote: '月額固定＋成果報酬',
-    feeFormat: '月額固定＋成果報酬 / 最低6ヶ月・上限5社',
     rebate: '95%',
     rebateNote: '固定',
     startRank: 'Platinum 即時',
