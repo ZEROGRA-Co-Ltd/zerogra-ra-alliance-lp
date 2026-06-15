@@ -3,6 +3,7 @@
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 import { CompanyCard } from '../ui/CompanyCard';
+import { Jobs } from './Jobs';
 import { companies, portfolio, type Company } from '@/src/data/companies';
 
 // Split the company list across the two marquee rows so each row carries
@@ -90,6 +91,9 @@ export function Companies() {
             </FadeIn>
           ))}
         </div>
+
+        {/* Jobs carousel — merged as a sub-section of Companies */}
+        <Jobs />
       </div>
     </section>
   );

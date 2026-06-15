@@ -41,14 +41,8 @@ export function Jobs() {
   };
 
   return (
-    <section id="jobs" aria-label="推薦可能な求人例" className="relative py-24 md:py-32">
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <div className="absolute right-1/4 top-1/3 h-[400px] w-[600px] rounded-full bg-accent/10 blur-[140px]" />
-        <div className="absolute left-1/4 bottom-1/3 h-[400px] w-[600px] rounded-full bg-primary/10 blur-[140px]" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div id="jobs" aria-label="推薦可能な求人例" className="relative mt-20 md:mt-28">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeader
             align="left"
             eyebrow="Jobs"
@@ -90,8 +84,7 @@ export function Jobs() {
             <div aria-hidden className="w-2 shrink-0 md:w-6" />
           </div>
         </FadeIn>
-      </div>
-    </section>
+    </div>
   );
 }
 

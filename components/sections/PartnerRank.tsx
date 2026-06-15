@@ -10,14 +10,15 @@ type Tier = 'standard' | 'silver' | 'gold' | 'platinum';
 type Rank = {
   name: string;
   condition: string;
+  rebate: string;
   tier: Tier;
 };
 
 const ranks: Rank[] = [
-  { name: 'STANDARD', condition: '初期登録', tier: 'standard' },
-  { name: 'SILVER', condition: '実績に応じて昇格', tier: 'silver' },
-  { name: 'GOLD', condition: '実績に応じて昇格', tier: 'gold' },
-  { name: 'PLATINUM', condition: 'TOPランク', tier: 'platinum' },
+  { name: 'STANDARD', condition: '初期登録', rebate: '75%', tier: 'standard' },
+  { name: 'SILVER', condition: '実績に応じて昇格', rebate: '80%', tier: 'silver' },
+  { name: 'GOLD', condition: '実績に応じて昇格', rebate: '85%', tier: 'gold' },
+  { name: 'PLATINUM', condition: 'TOPランク', rebate: '90%', tier: 'platinum' },
 ];
 
 const tierStyles: Record<
@@ -135,13 +136,20 @@ export function PartnerRank() {
                           {r.name}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 md:gap-4">
                         <span
-                          className={`text-xs md:text-sm ${
+                          className={`hidden text-xs sm:inline md:text-sm ${
                             isPlatinum ? 'text-white/85' : 'text-muted'
                           }`}
                         >
                           {r.condition}
+                        </span>
+                        <span
+                          className={`font-display text-2xl font-bold tracking-tight md:text-3xl ${
+                            isPlatinum ? 'text-accent' : style.nameClass
+                          }`}
+                        >
+                          {r.rebate}
                         </span>
                         {isPlatinum && (
                           <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent/50 bg-ink-deep/70 text-accent">
