@@ -1,10 +1,15 @@
 'use client';
 
-import { Check, Sparkles, Target, TrendingUp } from 'lucide-react';
+import { Check, Minus, Sparkles, Target, TrendingUp } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 import { CtaButton } from '../ui/CtaButton';
-import { plans, type Plan } from '@/src/data/plans';
+import {
+  plans,
+  planFeatureRows,
+  type Plan,
+  type PlanId,
+} from '@/src/data/plans';
 
 export function Plans() {
   return (
@@ -31,21 +36,241 @@ export function Plans() {
           description="紹介事業のフェーズと目標に応じて、4つのプランから最適なものをお選びいただけます。"
         />
 
-        <div className="mt-14 grid items-stretch gap-6 md:mt-20 md:grid-cols-2 lg:grid-cols-4">
+        {/* Desktop (lg+): unified comparison grid table */}
+        <FadeIn delay={0.1} className="mt-14 hidden lg:block lg:mt-20">
+          <PlanComparisonTable />
+        </FadeIn>
+
+        {/* Mobile / tablet (<lg): stacked plan cards */}
+        <div className="mt-14 grid items-stretch gap-6 md:mt-20 md:grid-cols-2 lg:hidden">
           {plans.map((plan, i) => (
             <FadeIn key={plan.id} delay={i * 0.08} className="h-full">
               <PlanCard plan={plan} />
             </FadeIn>
           ))}
         </div>
-
-        <FadeIn delay={0.3} className="mt-10 text-center">
-          <p className="text-xs text-muted/80 md:text-sm">
-            ※ Platinum（90%）へ到達できるのはBasic以上のプラン加入者のみです。Freeプランの還元率上限はGold（85%）となります。
-          </p>
-        </FadeIn>
       </div>
     </section>
+  );
+}
+
+const GRID_COLS =
+  'grid-cols-[minmax(180px,1.1fr)_repeat(4,minmax(0,1fr))]';
+
+function PlanComparisonTable() {
+  return (
+    <div
+      role="table"
+      aria-label="プラン比較表"
+      className="overflow-hidden rounded-2xl border border-white/8 bg-ink-card/60 backdrop-blur"
+    >
+      {/* Header row — plan info */}
+      <div className={`grid ${GRID_COLS}`} role="row">
+        <div className="border-b border-white/8 bg-white/[0.02] p-5" />
+        {plans.map((plan) => (
+          <PlanHeaderCell key={plan.id} plan={plan} />
+        ))}
+      </div>
+
+      {/* Monthly fee row */}
+      <ComparisonRow label="月額">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`flex items-baseline justify-center gap-1.5 p-5 ${cellBg(plan)}`}
+            role="cell"
+          >
+            <span className="font-display text-2xl font-bold text-white md:text-3xl">
+              {plan.monthlyFee}
+            </span>
+            <span className="text-[10px] text-muted">/ 月</span>
+          </div>
+        ))}
+      </ComparisonRow>
+
+      {/* Start rank row */}
+      <ComparisonRow label="スタートランク">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`p-5 text-center ${cellBg(plan)}`}
+            role="cell"
+          >
+            <span
+              className={`font-display text-xl font-bold md:text-2xl ${plan.startRankColor}`}
+            >
+              {plan.startRankLabel}
+            </span>
+          </div>
+        ))}
+      </ComparisonRow>
+
+      {/* Contract row */}
+      <ComparisonRow label="契約期間">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`p-5 text-center text-sm font-medium text-white ${cellBg(plan)}`}
+            role="cell"
+          >
+            {plan.contract}
+          </div>
+        ))}
+      </ComparisonRow>
+
+      {/* Target row */}
+      <ComparisonRow label="対象企業像">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`p-5 text-xs leading-relaxed text-white/85 ${cellBg(plan)}`}
+            role="cell"
+          >
+            {plan.target}
+          </div>
+        ))}
+      </ComparisonRow>
+
+      {/* Feature rows */}
+      {planFeatureRows.map((row) => (
+        <ComparisonRow key={row.label} label={row.label}>
+          {plans.map((plan) => (
+            <div
+              key={plan.id}
+              className={`flex items-center justify-center p-5 ${cellBg(plan)}`}
+              role="cell"
+            >
+              {row.values[plan.id as PlanId] ? (
+                <Check
+                  className="size-5 text-brand-green"
+                  strokeWidth={2.5}
+                  aria-label="対応"
+                />
+              ) : (
+                <Minus
+                  className="size-5 text-muted/40"
+                  strokeWidth={2}
+                  aria-label="非対応"
+                />
+              )}
+            </div>
+          ))}
+        </ComparisonRow>
+      ))}
+
+      {/* Monthly goal row */}
+      <ComparisonRow label="月間決定目標">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`flex items-center justify-center gap-2 p-5 ${cellBg(plan)}`}
+            role="cell"
+          >
+            <TrendingUp
+              className="size-4 shrink-0 text-accent"
+              strokeWidth={2}
+            />
+            <span className="font-display text-sm font-bold text-white">
+              {plan.monthlyGoal}
+            </span>
+          </div>
+        ))}
+      </ComparisonRow>
+
+      {/* CTA row */}
+      <div className={`grid ${GRID_COLS}`} role="row">
+        <div className="bg-white/[0.02] p-5" />
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`p-5 ${cellBg(plan)}`}
+            role="cell"
+          >
+            <CtaButton
+              variant={plan.highlighted ? 'primary' : 'ghost'}
+              className="w-full"
+            >
+              相談する
+            </CtaButton>
+            {plan.minContractNote && (
+              <p className="mt-3 text-center text-[10px] text-muted/80">
+                {plan.minContractNote}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ComparisonRow({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={`grid ${GRID_COLS} border-t border-white/8`} role="row">
+      <div
+        className="flex items-center bg-white/[0.02] p-5 text-sm font-medium text-white/90"
+        role="rowheader"
+      >
+        {label}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function cellBg(plan: Plan) {
+  return plan.highlighted ? 'bg-accent/[0.04]' : '';
+}
+
+function PlanHeaderCell({ plan }: { plan: Plan }) {
+  const highlighted = plan.highlighted;
+  return (
+    <div
+      className={`relative border-b border-white/8 p-5 text-center ${
+        highlighted ? 'bg-accent/[0.06]' : ''
+      }`}
+      role="columnheader"
+    >
+      {highlighted && (
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-accent"
+        />
+      )}
+      {plan.badges && plan.badges.length > 0 && (
+        <div className="mb-3 flex flex-wrap items-center justify-center gap-1.5">
+          {plan.badges.map((badge, idx) => (
+            <span
+              key={badge}
+              className={`font-display inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.15em] ${
+                highlighted && idx === 0
+                  ? 'bg-gradient-to-r from-primary to-accent text-white shadow-glow-soft'
+                  : 'border border-accent/40 bg-accent/10 text-accent'
+              }`}
+            >
+              {highlighted && idx === 0 && (
+                <Sparkles className="size-2.5" strokeWidth={2.5} />
+              )}
+              {badge}
+            </span>
+          ))}
+        </div>
+      )}
+      <h3
+        className={`font-display text-xl font-bold tracking-wider md:text-2xl ${
+          highlighted ? 'text-white' : 'text-white'
+        }`}
+      >
+        {plan.name}
+      </h3>
+      <p className="mt-1 text-[11px] text-muted">{plan.tagline}</p>
+    </div>
   );
 }
 
@@ -92,7 +317,6 @@ function PlanCard({ plan }: { plan: Plan }) {
       </h3>
       <p className="mt-1 text-xs text-muted md:text-sm">{plan.tagline}</p>
 
-      {/* 対象企業像 */}
       <div className="mt-5 flex items-start gap-2 rounded-xl border border-white/8 bg-white/[0.02] p-3">
         <Target
           className="mt-0.5 size-4 shrink-0 text-accent"
@@ -122,31 +346,41 @@ function PlanCard({ plan }: { plan: Plan }) {
         <dd className="mt-1 font-medium text-white">{plan.contract}</dd>
       </dl>
 
-      {/* 提供内容詳細 */}
       <p className="mt-5 text-xs leading-relaxed text-muted">
         {plan.targetDetail}
       </p>
 
       <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-white/8 pt-5">
-        {plan.features.map((f) => (
-          <li
-            key={f}
-            className="flex items-start gap-2 text-sm leading-snug text-white/90"
-          >
-            <Check
-              className="mt-0.5 size-4 shrink-0 text-brand-green"
-              strokeWidth={2.5}
-            />
-            <span>{f}</span>
-          </li>
-        ))}
+        {planFeatureRows.map((row) => {
+          const enabled = row.values[plan.id as PlanId];
+          return (
+            <li
+              key={row.label}
+              className={`flex items-start gap-2 text-sm leading-snug ${
+                enabled ? 'text-white/90' : 'text-muted/50'
+              }`}
+            >
+              {enabled ? (
+                <Check
+                  className="mt-0.5 size-4 shrink-0 text-brand-green"
+                  strokeWidth={2.5}
+                />
+              ) : (
+                <Minus
+                  className="mt-0.5 size-4 shrink-0 text-muted/40"
+                  strokeWidth={2}
+                />
+              )}
+              <span>{row.label}</span>
+            </li>
+          );
+        })}
       </ul>
 
       {plan.minContractNote && (
         <p className="mt-4 text-[11px] text-muted/80">{plan.minContractNote}</p>
       )}
 
-      {/* 月間決定目標 */}
       <div className="mt-5 flex items-center justify-between gap-3 rounded-xl border border-accent/20 bg-accent/[0.05] p-3">
         <div className="flex items-center gap-2">
           <TrendingUp

@@ -6,16 +6,16 @@ import { FadeIn } from '../ui/FadeIn';
 
 const worries = [
   {
-    icon: MessageSquareWarning,
-    text: 'RA企業とのコミュニケーションが希薄で求人の詳細がわからない',
+    icon: UserMinus,
+    text: '自社にRA担当者がおらず、保有求人が少ない',
   },
   {
-    icon: UserMinus,
-    text: 'CA人員しか確保しておらず求人開拓ができていない',
+    icon: MessageSquareWarning,
+    text: '契約求人の種類が似通っておりバリエーションがない',
   },
   {
     icon: Coins,
-    text: '求人媒体の月額費用が重く、成果が出ない月も固定費がかかる',
+    text: '求人DBを利用しているが決定が出ない',
   },
 ];
 

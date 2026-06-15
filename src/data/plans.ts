@@ -1,5 +1,45 @@
 export type PlanId = 'free' | 'basic' | 'pro' | 'executive';
 
+export type PlanFeatureRow = {
+  label: string;
+  values: Record<PlanId, boolean>;
+};
+
+export const planFeatureRows: PlanFeatureRow[] = [
+  {
+    label: '5,000求人へのアクセス',
+    values: { free: true, basic: true, pro: true, executive: true },
+  },
+  {
+    label: 'ランク制度（半期評価・昇格あり）',
+    values: { free: true, basic: true, pro: true, executive: true },
+  },
+  {
+    label: 'AIマッチングシステム（無料）',
+    values: { free: false, basic: true, pro: true, executive: true },
+  },
+  {
+    label: '求人選定サポート',
+    values: { free: false, basic: true, pro: true, executive: true },
+  },
+  {
+    label: '書類添削',
+    values: { free: false, basic: true, pro: true, executive: true },
+  },
+  {
+    label: '企業開拓リクエスト',
+    values: { free: false, basic: true, pro: true, executive: true },
+  },
+  {
+    label: '面接対策（各候補者1回、RA担当者が実施）',
+    values: { free: false, basic: false, pro: true, executive: true },
+  },
+  {
+    label: '月次事業相談MTG × 月4回（週次・各1時間）',
+    values: { free: false, basic: false, pro: true, executive: true },
+  },
+];
+
 export type Plan = {
   id: PlanId;
   name: string;

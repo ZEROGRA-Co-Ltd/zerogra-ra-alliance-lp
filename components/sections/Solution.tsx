@@ -15,23 +15,23 @@ type Item = {
 const items: Item[] = [
   {
     icon: Database,
-    title: '月額コストゼロで求人にアクセス',
-    description: '6,000件以上の良質な求人DBを、固定費なしで利用できます。',
-    highlights: ['月額費用 ¥0', '6,000+ 求人DB', '完全成果報酬'],
+    title: '求職者人気の高い上質な求人にアクセス可能',
+    description: '当社開拓の厳選した5,000件以上の良質な求人を紹介可能',
+    highlights: ['月額費用 ¥0〜', '優良な5,000求人＋', '専用ページで簡単アクセス'],
   },
   {
     icon: Handshake,
     title: 'プロのRAが選考を伴走',
     description:
-      '企業ごとの面接傾向・対策をRAが直接サポート。決まる推薦を実現します。',
-    highlights: ['企業別の選考対策', '社長の好みまで把握', '決定率を引き上げる'],
+      '企業ごとの面接傾向・対策をRAが直接サポート。決まる選考を実現します。',
+    highlights: ['企業別の選考対策情報の共有', '過去の決定傾向分析', '人的介入での企業プッシュ'],
   },
   {
     icon: TrendingUp,
     title: '成果に応じた高還元率',
     description:
-      '中抜きなし。採用企業との契約Feeベースで高い還元を実現します。',
-    highlights: ['中間マージンなし', 'パートナーランク制度あり', '実績に応じて昇格可'],
+      '採用企業との契約Feeベースで高い還元を実現します。',
+    highlights: ['パートナーランク制度あり', '実績に応じて還元率UP', '企業開拓コスト"0"で高手数料確保'],
   },
 ];
 
@@ -52,7 +52,7 @@ export function Solution() {
               <span className="gradient-text">実現できること</span>
             </>
           }
-          description="3つの軸で、エージェントの収益体質と選考精度を底上げします。"
+          description="貴社の外部RA集団として紹介事業の成長をお手伝いします。"
         />
 
         <div className="mt-14 grid gap-6 md:mt-20 md:grid-cols-3">
