@@ -85,6 +85,25 @@ function PlanComparisonTable() {
         ))}
       </ComparisonRow>
 
+      {/* Monthly goal row */}
+      <ComparisonRow label="月間決定目標">
+        {plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`flex items-center justify-center gap-2 p-5 ${cellBg(plan)}`}
+            role="cell"
+          >
+            <TrendingUp
+              className="size-4 shrink-0 text-accent"
+              strokeWidth={2}
+            />
+            <span className="font-display text-sm font-bold text-white">
+              {plan.monthlyGoal}
+            </span>
+          </div>
+        ))}
+      </ComparisonRow>
+
       {/* Feature rows */}
       {planFeatureRows.map((row) => (
         <ComparisonRow key={row.label} label={row.label}>
@@ -111,25 +130,6 @@ function PlanComparisonTable() {
           ))}
         </ComparisonRow>
       ))}
-
-      {/* Monthly goal row */}
-      <ComparisonRow label="月間決定目標">
-        {plans.map((plan) => (
-          <div
-            key={plan.id}
-            className={`flex items-center justify-center gap-2 p-5 ${cellBg(plan)}`}
-            role="cell"
-          >
-            <TrendingUp
-              className="size-4 shrink-0 text-accent"
-              strokeWidth={2}
-            />
-            <span className="font-display text-sm font-bold text-white">
-              {plan.monthlyGoal}
-            </span>
-          </div>
-        ))}
-      </ComparisonRow>
 
       {/* CTA row */}
       <div className={`grid ${GRID_COLS} border-t border-white/8`} role="row">

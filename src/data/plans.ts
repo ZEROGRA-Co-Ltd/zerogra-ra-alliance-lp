@@ -149,7 +149,6 @@ export const plans: Plan[] = [
     targetDetail:
       '初めからPlatinumランク（90%）で優良な5,000求人にアクセス。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋コンサルティングプラン。',
     monthlyGoal: '月10名〜（目安）',
-    minContractNote: '※最低6ヶ月契約',
     theme: {
       cardBg: 'bg-[rgba(139,92,246,0.1)]',
       cardBorder: 'border-purple-500',
@@ -183,7 +182,6 @@ export const plans: Plan[] = [
       '初めからPlatinum+ランク（95%）で優良な5,000求人にアクセス。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋フルコンサルティングプラン。',
     monthlyGoal: '月15名〜（目安）',
     badges: ['上限5社', '最低6ヶ月'],
-    minContractNote: '※最低6ヶ月契約',
     theme: {
       cardBg: 'bg-[rgba(245,158,11,0.1)]',
       cardBorder: 'border-amber-400',
