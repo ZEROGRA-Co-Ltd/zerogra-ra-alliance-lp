@@ -109,24 +109,17 @@ function PlanCard({ plan }: { plan: Plan }) {
       </div>
 
       <div className="mt-5 rounded-xl border border-white/8 bg-white/[0.02] p-4">
-        <div className="text-[10px] uppercase tracking-[0.2em] text-accent">
-          還元率
+        <div className="text-xs text-muted">スタートランク</div>
+        <div
+          className={`font-display mt-1 text-2xl font-bold ${plan.startRankColor}`}
+        >
+          {plan.startRankLabel}
         </div>
-        <div className="font-display mt-1 text-4xl font-bold text-white">
-          {plan.rebate}
-        </div>
-        <div className="mt-1 text-xs text-muted">{plan.rebateNote}</div>
       </div>
 
-      <dl className="mt-5 grid grid-cols-2 gap-3 text-xs">
-        <div>
-          <dt className="text-muted/70">スタートランク</dt>
-          <dd className="mt-1 font-medium text-white">{plan.startRank}</dd>
-        </div>
-        <div>
-          <dt className="text-muted/70">契約期間</dt>
-          <dd className="mt-1 font-medium text-white">{plan.contract}</dd>
-        </div>
+      <dl className="mt-5 text-xs">
+        <dt className="text-muted/70">契約期間</dt>
+        <dd className="mt-1 font-medium text-white">{plan.contract}</dd>
       </dl>
 
       {/* 提供内容詳細 */}
