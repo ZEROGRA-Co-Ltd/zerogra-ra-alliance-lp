@@ -46,6 +46,7 @@ export type Plan = {
   tagline: string;
   monthlyFee: string;
   feeNote: string;
+  feeFormat: string;
   rebate: string;
   rebateNote: string;
   startRank: string;
@@ -59,6 +60,11 @@ export type Plan = {
   badges?: string[];
   highlighted?: boolean;
   minContractNote?: string;
+  theme: {
+    cardBg: string;
+    cardBorder: string;
+    cardShadow?: string;
+  };
 };
 
 export const plans: Plan[] = [
@@ -68,6 +74,7 @@ export const plans: Plan[] = [
     tagline: '完全成果報酬',
     monthlyFee: '¥0',
     feeNote: '完全成果報酬',
+    feeFormat: '完全成果報酬',
     rebate: '75〜85%',
     rebateNote: '上限Gold＝85%止まり',
     startRank: 'Standard',
@@ -82,6 +89,10 @@ export const plans: Plan[] = [
     targetDetail:
       '完全成果報酬（レベニューシェア）で優良な5,000求人にアクセス。ランク昇給制度あり。',
     monthlyGoal: '月1〜3名（目安）',
+    theme: {
+      cardBg: 'bg-white/[0.03]',
+      cardBorder: 'border-slate-700',
+    },
   },
   {
     id: 'basic',
@@ -89,6 +100,7 @@ export const plans: Plan[] = [
     tagline: '月額固定＋成果報酬',
     monthlyFee: '¥120,000',
     feeNote: '月額固定＋成果報酬',
+    feeFormat: '月額固定＋成果報酬',
     rebate: '85〜90%',
     rebateNote: 'Platinum到達可能',
     startRank: 'Gold 即時',
@@ -107,8 +119,12 @@ export const plans: Plan[] = [
     targetDetail:
       '初めからGoldランク（85%）で優良な5,000求人にアクセス。AIマッチングシステムや候補者ごとの求人選定をきめ細かにサポート。',
     monthlyGoal: '月4〜10名（目安）',
-    badges: ['MOST POPULAR'],
     highlighted: true,
+    theme: {
+      cardBg: 'bg-[rgba(37,99,235,0.15)]',
+      cardBorder: 'border-cyan-400',
+      cardShadow: 'shadow-[0_0_30px_rgba(0,194,255,0.2)]',
+    },
   },
   {
     id: 'pro',
@@ -116,6 +132,7 @@ export const plans: Plan[] = [
     tagline: '月額固定＋成果報酬',
     monthlyFee: '¥300,000',
     feeNote: '月額固定＋成果報酬',
+    feeFormat: '月額固定＋成果報酬 / 最低6ヶ月',
     rebate: '90%',
     rebateNote: '固定',
     startRank: 'Platinum 即時',
@@ -137,6 +154,10 @@ export const plans: Plan[] = [
       '初めからPlatinumランク（90%）で優良な5,000求人にアクセス。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋コンサルティングプラン。',
     monthlyGoal: '月10名〜（目安）',
     minContractNote: '※最低6ヶ月契約',
+    theme: {
+      cardBg: 'bg-[rgba(139,92,246,0.1)]',
+      cardBorder: 'border-purple-500',
+    },
   },
   {
     id: 'executive',
@@ -144,6 +165,7 @@ export const plans: Plan[] = [
     tagline: '月額固定＋成果報酬',
     monthlyFee: '¥500,000',
     feeNote: '月額固定＋成果報酬',
+    feeFormat: '月額固定＋成果報酬 / 最低6ヶ月・上限5社',
     rebate: '95%',
     rebateNote: '固定',
     startRank: 'Platinum 即時',
@@ -167,5 +189,9 @@ export const plans: Plan[] = [
     monthlyGoal: '月15名〜（目安）',
     badges: ['上限5社', '最低6ヶ月'],
     minContractNote: '※最低6ヶ月契約',
+    theme: {
+      cardBg: 'bg-[rgba(245,158,11,0.1)]',
+      cardBorder: 'border-amber-400',
+    },
   },
 ];
