@@ -9,6 +9,8 @@ export type Plan = {
   rebate: string;
   rebateNote: string;
   startRank: string;
+  startRankLabel: string;
+  startRankColor: string;
   contract: string;
   features: string[];
   target: string;
@@ -29,6 +31,8 @@ export const plans: Plan[] = [
     rebate: '75〜85%',
     rebateNote: '上限Gold＝85%止まり',
     startRank: 'Standard',
+    startRankLabel: 'Standard',
+    startRankColor: 'text-[#94a3b8]',
     contract: '縛りなし',
     features: [
       '5,000求人へのアクセス',
@@ -48,6 +52,8 @@ export const plans: Plan[] = [
     rebate: '85〜90%',
     rebateNote: 'Platinum到達可能',
     startRank: 'Gold 即時',
+    startRankLabel: 'Gold',
+    startRankColor: 'text-[#F59E0B]',
     contract: '縛りなし',
     features: [
       '5,000求人へのアクセス',
@@ -73,6 +79,8 @@ export const plans: Plan[] = [
     rebate: '90%',
     rebateNote: '固定',
     startRank: 'Platinum 即時',
+    startRankLabel: 'Platinum',
+    startRankColor: 'text-[#00c2ff]',
     contract: '最低6ヶ月',
     features: [
       '5,000求人へのアクセス',
@@ -99,6 +107,9 @@ export const plans: Plan[] = [
     rebate: '95%',
     rebateNote: '固定',
     startRank: 'Platinum 即時',
+    startRankLabel: 'Platinum+',
+    startRankColor:
+      'bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent',
     contract: '最低6ヶ月・上限5社限定',
     features: [
       '5,000求人へのアクセス',
