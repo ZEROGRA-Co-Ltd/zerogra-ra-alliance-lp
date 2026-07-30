@@ -1,7 +1,6 @@
 'use client';
 
 import { Check, Minus, Star, TrendingUp } from 'lucide-react';
-import { SectionHeader } from '../ui/SectionHeader';
 import { FadeIn } from '../ui/FadeIn';
 import { CtaButton } from '../ui/CtaButton';
 import {
@@ -24,25 +23,13 @@ export function Plans() {
       </div>
 
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <SectionHeader
-          eyebrow="Plans"
-          title={
-            <>
-              あなたのフェーズに合わせた
-              <br className="hidden md:block" />
-              <span className="gradient-text">プランを選択</span>
-            </>
-          }
-          description="紹介事業のフェーズと目標に応じて、4つのプランから最適なものをお選びいただけます。"
-        />
-
         {/* Desktop (lg+): unified comparison grid table */}
-        <FadeIn delay={0.1} className="mt-14 hidden lg:block lg:mt-20">
+        <FadeIn delay={0.1} className="hidden lg:block">
           <PlanComparisonTable />
         </FadeIn>
 
         {/* Mobile / tablet (<lg): stacked plan cards */}
-        <div className="mt-14 grid items-stretch gap-6 md:mt-20 md:grid-cols-2 lg:hidden">
+        <div className="grid items-stretch gap-6 md:grid-cols-2 lg:hidden">
           {plans.map((plan, i) => (
             <FadeIn key={plan.id} delay={i * 0.08} className="h-full">
               <PlanCard plan={plan} />
