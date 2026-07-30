@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      aria-label="ZEROGRA RA ALLIANCE — CA企業向け無料求人DBアライアンス"
+      aria-label="ZEROGRA RA ALLIANCE — CA企業向け RA BPO サービス・アライアンス"
       className="relative isolate overflow-hidden pb-24 pt-32 md:pb-32 md:pt-40"
     >
       <div aria-hidden className="absolute inset-0 -z-10">
@@ -19,10 +19,10 @@ export function Hero() {
 
       {/* SEO / AI search support — visible only to assistive tech and crawlers */}
       <p className="sr-only">
-        ZEROGRA RA ALLIANCEは、求人データベースを無料で提供するCA企業向けアライアンスです。
+        ZEROGRA RA ALLIANCEは、CA企業向けのRA BPOサービス・アライアンスです。
         人材紹介会社・転職エージェント・キャリアアドバイザー企業が
-        月額費用なしで6,000件以上の求人にアクセスできます。
-        RAアライアンス・求人DB無料・人材紹介支援を探している企業様はお気軽にご相談ください。
+        自社でRAを構えることなく、ZEROGRAのRAチームに紹介事業のRA業務を丸ごとアウトソースできます。
+        外部RA・RAアウトソーシング・選考伴走を探している企業様はお気軽にご相談ください。
       </p>
 
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 px-5 text-center md:px-8">
@@ -53,11 +53,11 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="max-w-2xl text-balance text-base leading-relaxed text-muted md:text-lg"
         >
-          自社でRAを構えることなく、厳選された求人DBと
+          自社でRA組織を構えることなく、
           <br className="hidden sm:block" />
-          プロのRAサポートをそのまま活用できる。
+          プロのRAチームが貴社の紹介事業を丸ごとサポート。
           <br className="hidden sm:block" />
-          CA企業のための、新しいパートナー制度です。
+          CA企業のための、外部RA BPOサービスです。
         </motion.p>
 
         <motion.div

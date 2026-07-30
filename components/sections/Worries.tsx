@@ -7,15 +7,15 @@ import { FadeIn } from '../ui/FadeIn';
 const worries = [
   {
     icon: UserMinus,
-    text: '自社にRA担当者がおらず、保有求人が少ない',
+    text: '自社にRA担当者がおらず、求人提案の質が上がらない',
   },
   {
     icon: MessageSquareWarning,
-    text: '契約求人の種類が似通っておりバリエーションがない',
+    text: 'RA業務を内製化しようとしても採用・育成コストが高い',
   },
   {
     icon: Coins,
-    text: '求人DBを利用しているが決定が出ない',
+    text: '求人プラットフォームを使っているが選考通過率が低い',
   },
 ];
 

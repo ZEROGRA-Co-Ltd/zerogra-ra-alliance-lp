@@ -17,29 +17,29 @@ const notoSansJp = Noto_Sans_JP({
 });
 
 const SITE_URL = 'https://zerogra-ra-alliance-lp.vercel.app';
-const TITLE = 'ZEROGRA RA ALLIANCE｜CA企業向け無料求人DBアライアンス';
+const TITLE = 'ZEROGRA RA ALLIANCE｜CA企業向け RA BPOサービス・アライアンス';
 const DESCRIPTION =
-  '月額完全無料で6,000件以上の求人DBにアクセス。株式会社ZEROGRAが提供するCA企業向けRAアライアンス。求人開拓・選考伴走・高還元率を実現するパートナー制度です。';
+  '自社でRAを構えずに紹介事業を運営できる、CA企業向けの外部RA BPOサービス。ZEROGRAのRAチームが選考伴走・企業リレーションを提供し、高還元率を実現するパートナー制度です。';
 const OG_DESCRIPTION =
-  '月額完全無料で6,000件以上の求人DBにアクセス。求人開拓・選考伴走・高還元率を実現するCA企業向けRAパートナー制度。';
+  '自社RA不要。ZEROGRAのRAチームがCA企業の紹介事業をBPOで支援。選考伴走・高還元率を実現する外部RAアライアンス。';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
-    '求人データベース 無料',
-    'CA企業 求人DB',
-    'RAアライアンス',
-    '人材紹介 求人 無料',
-    'エージェントプラットフォーム',
-    '転職エージェント 求人開拓',
+    'RA BPO',
     'RA アウトソーシング',
-    '人材エージェント 求人DB',
+    '外部RA 人材紹介',
+    'CA企業 RAサポート',
+    'RAアライアンス',
+    '人材紹介 RA組織',
+    '転職エージェント RA外注',
+    '選考伴走 人材紹介',
     'ZEROGRA RA ALLIANCE',
-    '求人データベース CA',
-    '人材紹介会社 求人 費用なし',
-    'キャリアエージェント 求人',
+    '人材紹介会社 BPO',
+    'キャリアエージェント RA',
+    '紹介事業 外部委託',
   ],
   authors: [{ name: '株式会社ZEROGRA', url: 'https://zerogra-mars.com/' }],
   creator: '株式会社ZEROGRA',
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
-    description: '月額完全無料で6,000件以上の求人DBにアクセス。CA企業向けRAアライアンス。',
+    description: '自社RA不要。ZEROGRAのRAチームがCA企業の紹介事業をBPOで支援する外部RAアライアンス。',
     images: ['/og-image.png'],
   },
   alternates: {
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   // AI crawler hints
   other: {
     'application-name': 'ZEROGRA RA ALLIANCE',
-    category: '人材紹介・求人データベース・RAアライアンス',
+    category: '人材紹介・RA BPO・RAアウトソーシング・RAアライアンス',
   },
 };
 
@@ -95,7 +95,7 @@ const webPageJsonLd = {
   '@type': 'WebPage',
   name: 'ZEROGRA RA ALLIANCE',
   description:
-    '月額完全無料で6,000件以上の求人DBにアクセスできるCA企業向けRAアライアンス。',
+    'CA企業向けの外部RA BPOサービス。自社でRA組織を持たずに紹介事業を運営できるアライアンス。',
   url: SITE_URL,
   publisher: {
     '@type': 'Organization',
@@ -106,14 +106,14 @@ const webPageJsonLd = {
     '@type': 'Service',
     name: 'ZEROGRA RA ALLIANCE',
     description:
-      'CA企業向け求人DBアライアンスサービス。月額無料・高還元率・RAによる選考伴走。',
+      'CA企業向けRA BPO・アウトソーシングサービス。ZEROGRAのRAチームが選考伴走・企業リレーションを提供し、高還元率を実現。',
     provider: {
       '@type': 'Organization',
       name: '株式会社ZEROGRA',
       url: 'https://zerogra-mars.com/',
     },
     areaServed: 'JP',
-    serviceType: '求人データベースアライアンス',
+    serviceType: 'RA BPO・RAアウトソーシング・RAアライアンス',
   },
 };
 
