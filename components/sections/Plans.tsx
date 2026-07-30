@@ -107,27 +107,33 @@ function PlanComparisonTable() {
       {/* Feature rows */}
       {planFeatureRows.map((row) => (
         <ComparisonRow key={row.label} label={row.label}>
-          {plans.map((plan) => (
-            <div
-              key={plan.id}
-              className={`flex items-center justify-center p-5 ${cellBg(plan)}`}
-              role="cell"
-            >
-              {row.values[plan.id as PlanId] ? (
-                <Check
-                  className="size-5 text-brand-green"
-                  strokeWidth={2.5}
-                  aria-label="対応"
-                />
-              ) : (
-                <Minus
-                  className="size-5 text-muted/40"
-                  strokeWidth={2}
-                  aria-label="非対応"
-                />
-              )}
-            </div>
-          ))}
+          {plans.map((plan) => {
+            const value = row.values[plan.id as PlanId];
+            const isText = typeof value === 'string';
+            return (
+              <div
+                key={plan.id}
+                className={`flex items-center justify-center p-5 text-center text-xs leading-relaxed text-white/90 ${cellBg(plan)}`}
+                role="cell"
+              >
+                {isText ? (
+                  <span>{value}</span>
+                ) : value ? (
+                  <Check
+                    className="size-5 text-brand-green"
+                    strokeWidth={2.5}
+                    aria-label="対応"
+                  />
+                ) : (
+                  <Minus
+                    className="size-5 text-muted/40"
+                    strokeWidth={2}
+                    aria-label="非対応"
+                  />
+                )}
+              </div>
+            );
+          })}
         </ComparisonRow>
       ))}
 
@@ -298,7 +304,9 @@ function PlanCard({ plan }: { plan: Plan }) {
 
         <ul className="mt-5 flex flex-1 flex-col gap-2 border-t border-white/8 pt-5">
           {planFeatureRows.map((row) => {
-            const enabled = row.values[plan.id as PlanId];
+            const value = row.values[plan.id as PlanId];
+            const isText = typeof value === 'string';
+            const enabled = isText ? true : value;
             return (
               <li
                 key={row.label}
@@ -317,7 +325,7 @@ function PlanCard({ plan }: { plan: Plan }) {
                     strokeWidth={2}
                   />
                 )}
-                <span>{row.label}</span>
+                <span>{isText ? value : row.label}</span>
               </li>
             );
           })}

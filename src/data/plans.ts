@@ -1,14 +1,21 @@
 export type PlanId = 'free' | 'basic' | 'pro' | 'executive';
 
+export type PlanFeatureValue = boolean | string;
+
 export type PlanFeatureRow = {
   label: string;
-  values: Record<PlanId, boolean>;
+  values: Record<PlanId, PlanFeatureValue>;
 };
 
 export const planFeatureRows: PlanFeatureRow[] = [
   {
-    label: '5,000求人へのアクセス',
-    values: { free: true, basic: true, pro: true, executive: true },
+    label: 'RAチームによるサポート範囲',
+    values: {
+      free: 'RAチームによる求人マッチングサポート',
+      basic: 'RAチームによる求人マッチング＋選考サポート',
+      pro: 'RAチームによるフル選考サポート＋BPOコンサル',
+      executive: 'RAチームによるフルBPO＋経営コンサルティング',
+    },
   },
   {
     label: 'ランク制度（半期評価・昇格あり）',
@@ -80,12 +87,12 @@ export const plans: Plan[] = [
     startRankColor: 'text-[#94a3b8]',
     contract: '縛りなし',
     features: [
-      '5,000求人へのアクセス',
+      'RAチームによる求人マッチングサポート',
       'ランク制度（半期評価・昇格あり）',
     ],
     target: '人材紹介事業を立ち上げたばかりのスタート期の企業',
     targetDetail:
-      '完全成果報酬（レベニューシェア）で優良な5,000求人にアクセス。ランク昇給制度あり。',
+      '完全成果報酬（レベニューシェア）でRAチームが求人マッチングをサポート。ランク昇給制度あり。',
     monthlyGoal: '月1〜3名（目安）',
     theme: {
       cardBg: 'bg-white/[0.03]',
@@ -105,7 +112,7 @@ export const plans: Plan[] = [
     startRankColor: 'text-[#F59E0B]',
     contract: '縛りなし',
     features: [
-      '5,000求人へのアクセス',
+      'RAチームによる求人マッチング＋選考サポート',
       'Goldランク即時スタート',
       'AIマッチングシステム',
       '求人選定サポート',
@@ -114,7 +121,7 @@ export const plans: Plan[] = [
     ],
     target: '拡大フェーズに入っており、求人提案先を増やしたい企業',
     targetDetail:
-      '初めからGoldランク（85%）で優良な5,000求人にアクセス。AIマッチングシステムや候補者ごとの求人選定をきめ細かにサポート。',
+      '初めからGoldランク（85%）でRAチームが求人マッチングと選考をサポート。AIマッチングシステムや候補者ごとの求人選定をきめ細かにフォロー。',
     monthlyGoal: '月4〜10名（目安）',
     highlighted: true,
     theme: {
@@ -136,7 +143,7 @@ export const plans: Plan[] = [
     startRankColor: 'text-[#00c2ff]',
     contract: '最低6ヶ月',
     features: [
-      '5,000求人へのアクセス',
+      'RAチームによるフル選考サポート＋BPOコンサル',
       'Platinumランク即時スタート',
       'AIマッチングシステム',
       '求人選定サポート',
@@ -147,7 +154,7 @@ export const plans: Plan[] = [
     ],
     target: '中小〜中堅企業での新規事業として人材紹介事業を立ち上げたい企業',
     targetDetail:
-      '初めからPlatinumランク（90%）で優良な5,000求人にアクセス。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋コンサルティングプラン。',
+      '初めからPlatinumランク（90%）でRAチームがフル選考をサポート。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋コンサルティングプラン。',
     monthlyGoal: '月10名〜（目安）',
     theme: {
       cardBg: 'bg-[rgba(139,92,246,0.1)]',
@@ -168,7 +175,7 @@ export const plans: Plan[] = [
       'bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent',
     contract: '最低6ヶ月・上限5社限定',
     features: [
-      '5,000求人へのアクセス',
+      'RAチームによるフルBPO＋経営コンサルティング',
       'Platinumランク即時スタート',
       'AIマッチングシステム',
       '求人選定サポート',
@@ -179,7 +186,7 @@ export const plans: Plan[] = [
     ],
     target: '中堅〜準大手企業での新規事業として人材紹介事業を立ち上げたい企業',
     targetDetail:
-      '初めからPlatinum+ランク（95%）で優良な5,000求人にアクセス。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋フルコンサルティングプラン。',
+      '初めからPlatinum+ランク（95%）でRAチームがフルBPOをサポート。AIマッチングシステムや求人選定サポートだけでなく、事業成長のための定期MTGや集客アドバイス等を含めたBPO＋フルコンサルティングプラン。',
     monthlyGoal: '月15名〜（目安）',
     badges: ['上限5社', '最低6ヶ月'],
     theme: {

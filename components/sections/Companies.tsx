@@ -15,7 +15,7 @@ const rowB = companies.slice(half);
 
 export function Companies() {
   return (
-    <section id="companies" aria-label="推薦可能求人の主な企業" className="relative py-24 md:py-32">
+    <section id="companies" aria-label="ZEROGRAのRAチームが開拓・連携している企業" className="relative py-24 md:py-32">
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
@@ -29,11 +29,11 @@ export function Companies() {
           eyebrow="Companies"
           title={
             <>
-              <span className="gradient-text">推薦可能求人</span>
-              の主な企業
+              ZEROGRAの<span className="gradient-text">RAチーム</span>が
+              開拓・連携している企業
             </>
           }
-          description="ZEROGRAが直接開拓・コンタクトしている企業群です。"
+          description="ZEROGRAのRAチームが直接リレーションを持つ企業群です。選考情報・面接傾向をRAが熟知しています。"
         />
 
         <FadeIn delay={0.1} className="mt-14 md:mt-20">

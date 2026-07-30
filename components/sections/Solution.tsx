@@ -16,9 +16,14 @@ type Item = {
 const items: Item[] = [
   {
     icon: Database,
-    title: '求職者人気の高い上質な求人にアクセス可能',
-    description: '当社開拓の厳選した5,000件以上の良質な求人を紹介可能',
-    highlights: ['月額費用 ¥0〜', '優良な5,000求人＋', '専用ページで簡単アクセス'],
+    title: '厳選求人へのマッチングサポート',
+    description:
+      'ZEROGRAのRAチームが候補者に最適な求人をピックアップ・提案。求人選定から応募書類まで一貫サポートします。',
+    highlights: [
+      'RAチームによる求人選定',
+      '候補者ごとの最適マッチング',
+      '専用Slackで即レス対応',
+    ],
   },
   {
     icon: Handshake,
@@ -31,7 +36,7 @@ const items: Item[] = [
     icon: TrendingUp,
     title: '成果に応じた高還元率',
     description:
-      '採用企業との契約Feeベースで高い還元を実現します。',
+      'RA業務をBPOすることで、自社採用コストを抑えながら高い還元率を実現します。',
     highlights: ['パートナーランク制度あり', '実績に応じて還元率UP', '企業開拓コスト"0"で高手数料確保'],
   },
   {
