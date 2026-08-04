@@ -4,7 +4,6 @@ import { Hero } from '@/components/sections/Hero';
 import { Companies } from '@/components/sections/Companies';
 import { Worries } from '@/components/sections/Worries';
 import { Solution } from '@/components/sections/Solution';
-import { Plans } from '@/components/sections/Plans';
 import { PartnerRank } from '@/components/sections/PartnerRank';
 import { Steps } from '@/components/sections/Steps';
 import { Faq } from '@/components/sections/Faq';
@@ -72,7 +71,6 @@ export default function Home() {
         <Companies />
         <PartnerRank />
         <Steps />
-        <Plans />
         <Faq />
         <Booking />
       </main>
